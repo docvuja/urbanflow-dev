@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">UrbanFlow</string>
+    <string name="lorem">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+        cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </string>`
+    <string name="orga">Organisé par :</string>
+    <string name="youtube_key">AIzaSyBFAqnGJxCLSOP2Q0qPjF424szPqvpTook</string>
+    <string name="failed">Failed to initialize Youtube Player</string>
+    <string name="action_settings">action_settings</string>
+    <string name="menu_refresh">menu_refresh</string>
+    <string name="menu_about">About</string>
+    <string name="menu_share">share</string>
+    <string name="send_to">Partager via ...</string>
+    <string name="article">Écrit par</string>
+    <string name="search">search</string>
+    <string name="search_title">Rechercher</string>
+    <string name="search_hint">Rechercher</string>
+    <string name="pres_ruben">Ruben Moutot - ING 2 MTI</string>
+    <string name="pres_jerem">Jérémy Bartolomeu Bonze - ING 2 MTI</string>
+</resources>

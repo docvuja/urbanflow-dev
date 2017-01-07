@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/image_article"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            tools:background="@color/colorPrimary" />
+
+        <TextView
+            android:id="@+id/title_article"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/fg"
+            android:textSize="@dimen/title"
+            android:textStyle="bold"
+            tools:text="Title : description"
+            android:layout_marginLeft="@dimen/margin_text"
+            android:layout_marginRight="@dimen/margin_text"/>
+
+        <TextView
+            android:id="@+id/text_article"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/fg"
+            android:layout_marginLeft="@dimen/margin_text"
+            android:layout_marginRight="@dimen/margin_text"
+            tools:text="@string/lorem"
+            android:textSize="@dimen/content"/>
+
+        <TextView
+            android:id="@+id/author"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="right"
+            android:paddingTop="20dp"
+            android:paddingRight="@dimen/margin_text"
+            android:layout_marginBottom="@dimen/margin_text"
+            android:textColor="@color/fg"
+            android:textSize="@dimen/footer"
+            tools:text="Author" />
+
+    </LinearLayout>
+</ScrollView>

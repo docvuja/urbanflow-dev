@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/image_event"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            tools:background="@color/colorPrimary" />
+
+        <TextView
+            android:id="@+id/name_event"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/title"
+            android:textStyle="bold"
+            android:paddingTop="10dp"
+            android:gravity="center_horizontal"
+            android:layout_marginLeft="@dimen/margin_text"
+            android:layout_marginRight="@dimen/margin_text"
+            tools:text="Battle UrbanFlow"
+            android:textColor="@color/fg"
+            />
+
+        <TextView
+            android:id="@+id/place"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/extra"
+            android:gravity="center_horizontal"
+            android:layout_marginLeft="@dimen/margin_text"
+            android:layout_marginRight="@dimen/margin_text"
+            tools:text="Accorhotel Arena"
+            android:textColor="@color/fg"
+            />
+
+        <TextView
+            android:id="@+id/date_event"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/extra"
+            android:gravity="center_horizontal"
+            android:layout_marginLeft="@dimen/margin_text"
+            android:layout_marginRight="@dimen/margin_text"
+            tools:text="19 Juin 2016 à 14h"
+            android:textColor="@color/fg"
+            />
+
+        <TextView
+            android:id="@+id/organizer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/extra"
+            android:gravity="center_horizontal"
+            android:layout_marginLeft="@dimen/margin_text"
+            android:layout_marginRight="@dimen/margin_text"
+            android:text="@string/orga"
+            android:textColor="@color/fg"
+            />
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp"
+            android:layout_marginLeft="@dimen/margin_text"
+            android:layout_marginRight="@dimen/margin_text"
+            android:layout_marginBottom="@dimen/margin_text"
+            android:textSize="@dimen/content"
+            android:textColor="@color/fg"
+            tools:text="@string/lorem"
+            />
+
+    </LinearLayout>
+</ScrollView>

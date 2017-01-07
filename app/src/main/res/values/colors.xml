@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="article">#00A0B0</color>
+    <color name="event">#CC333F</color>
+    <color name="video">#F0A830</color>
+    <color name="bg">#BCBCBC</color>
+    <color name="vpbg">#E9E9E9</color>
+    <color name="fg">#000000</color>
+</resources>
