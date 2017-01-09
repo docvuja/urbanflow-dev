@@ -31,12 +31,6 @@ task wrapper(type: Wrapper) {
 }
 
 test {
-
-    reports {
-        junitXml.enabled = true;
-        html.enabled = false;
-    }
-
     filter {
         includeTestsMatching "*Spec"
     }
