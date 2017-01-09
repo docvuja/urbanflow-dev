@@ -74,9 +74,10 @@ public class PagerActivityTest {
     public void testDNSP() throws InterruptedException {
         for (int i = 0; i < 9; ++i) {
             onView(withId(R.id.container))
-                    .perform(swipeLeft());Thread.sleep(200);
+                    .perform(swipeLeft());
+            Thread.sleep(200);
         }
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         onView(withId(R.id.title_article))
                 .check(matches(withText("Le DNSP pour LES NULS (version #STRITER)")));
         onView(withId(R.id.text_article))
@@ -89,9 +90,10 @@ public class PagerActivityTest {
     public void testConference() throws InterruptedException {
         for (int i = 0; i < 4; ++i) {
             onView(withId(R.id.container))
-                    .perform(swipeLeft());Thread.sleep(200);
+                    .perform(swipeLeft());
+            Thread.sleep(200);
         }
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         onView(withId(R.id.title_article))
                 .check(matches(withText("Retour sur la conférence-débat de @NoiseLaVille | STRITER")));
         onView(withId(R.id.text_article))
@@ -104,9 +106,10 @@ public class PagerActivityTest {
     public void testExperience() throws InterruptedException {
         for (int i = 0; i < 2; ++i) {
             onView(withId(R.id.container))
-                    .perform(swipeLeft());Thread.sleep(200);
+                    .perform(swipeLeft());
+            Thread.sleep(200);
         }
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         onView(withId(R.id.title_article))
                 .check(matches(withText("Retour sur l’expérience “The Turnament” (FR) | #STRITER")));
         onView(withId(R.id.text_article))
@@ -131,9 +134,10 @@ public class PagerActivityTest {
     public void testKantyn() throws InterruptedException {
         for (int i = 0; i < 10; ++i) {
             onView(withId(R.id.container))
-                    .perform(swipeLeft());Thread.sleep(200);
+                    .perform(swipeLeft());
+            Thread.sleep(200);
         }
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         onView(withId(R.id.video_title))
                 .check(matches(withText("Kantyn x PNL #LaFrenchTouch")));
         onView(withId(R.id.video_desc))
@@ -144,9 +148,10 @@ public class PagerActivityTest {
     public void testAnthologie() throws InterruptedException {
         for (int i = 0; i < 12; ++i) {
             onView(withId(R.id.container))
-                    .perform(swipeLeft());Thread.sleep(200);
+                    .perform(swipeLeft());
+            Thread.sleep(200);
         }
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         onView(withId(R.id.video_title))
                 .check(matches(withText("Un battle d'anthologie")));
         onView(withId(R.id.video_desc))
@@ -157,9 +162,10 @@ public class PagerActivityTest {
     public void testAnissa() throws InterruptedException {
         for (int i = 0; i < 5; ++i) {
             onView(withId(R.id.container))
-                    .perform(swipeLeft());Thread.sleep(200);
+                    .perform(swipeLeft());
+            Thread.sleep(200);
         }
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         onView(withId(R.id.video_title))
                 .check(matches(withText(startsWith("Anissa x Lefa #LaFrenchTouch"))));
         onView(withId(R.id.video_desc))
@@ -170,9 +176,10 @@ public class PagerActivityTest {
     public void testJerems() throws InterruptedException {
         for (int i = 0; i < 3; ++i) {
             onView(withId(R.id.container))
-                    .perform(swipeLeft());Thread.sleep(200);
+                    .perform(swipeLeft());
+            Thread.sleep(200);
         }
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         onView(withId(R.id.video_title))
                 .check(matches(withText(startsWith("Maître Gims"))));
         onView(withId(R.id.video_desc))
@@ -184,9 +191,10 @@ public class PagerActivityTest {
     public void testCoursDeDanse() throws InterruptedException {
         for (int i = 0; i < 11; ++i) {
             onView(withId(R.id.container))
-                    .perform(swipeLeft());Thread.sleep(200);
+                    .perform(swipeLeft());
+            Thread.sleep(200);
         }
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         onView(withId(R.id.name_event))
                 .check(matches(withText("Cours de danse")));
         onView(withId(R.id.date_event))
@@ -204,9 +212,10 @@ public class PagerActivityTest {
     public void testJusteDebout() throws InterruptedException {
         for (int i = 0; i < 8; ++i) {
             onView(withId(R.id.container))
-                    .perform(swipeLeft());Thread.sleep(200);
+                    .perform(swipeLeft());
+            Thread.sleep(200);
         }
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         onView(withId(R.id.name_event))
                 .check(matches(withText("Juste Debout 2017")));
         onView(withId(R.id.date_event))
@@ -224,9 +233,10 @@ public class PagerActivityTest {
     public void testPopping() throws InterruptedException {
         for (int i = 0; i < 7; ++i) {
             onView(withId(R.id.container))
-                    .perform(swipeLeft());Thread.sleep(200);
+                    .perform(swipeLeft());
+            Thread.sleep(200);
         }
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         onView(withId(R.id.name_event))
                 .check(matches(withText("Popping Choreo Workshop")));
         onView(withId(R.id.date_event))
@@ -243,9 +253,10 @@ public class PagerActivityTest {
     public void testReady() throws InterruptedException {
         for (int i = 0; i < 6; ++i) {
             onView(withId(R.id.container))
-                    .perform(swipeLeft());Thread.sleep(200);
+                    .perform(swipeLeft());
+            Thread.sleep(200);
         }
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         onView(withId(R.id.name_event))
                 .check(matches(withText("WAR Battle - 1vs1 Popping & HipHop - by Ready Or Not")));
         onView(withId(R.id.date_event))
