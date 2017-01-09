@@ -78,7 +78,7 @@ public class EventManagement {
                     FragmentTransaction transaction = fm.beginTransaction();
                     ElementsFragment elementsFragment = new ElementsFragment();
                     transaction.replace(R.id.main_content, elementsFragment);
-                    transaction.commit();
+                    transaction.commitAllowingStateLoss();
 
                 } catch (JSONException e) {
                     e.printStackTrace();
