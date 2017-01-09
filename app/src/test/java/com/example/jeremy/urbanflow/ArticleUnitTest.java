@@ -4,6 +4,8 @@ import com.example.jeremy.urbanflow.Beans.Article;
 
 import org.junit.*;
 
+import java.math.BigInteger;
+import java.security.SecureRandom;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
@@ -29,6 +31,7 @@ public class ArticleUnitTest {
             "Des points qui ont été contre-carré avec merveille par Nasty & Bruce Ykanji. Ce dernier a superbement exprimé son ras-le-bol ainsi que son manque de confiance en un système redondant qui n’a jusque là jamais su apporter les aides suffisantes ainsi que les réponses nécessaires depuis 30 ans. Bien que la question ait été posé, aucune réponse n’a été apporté quant à savoir qui donc a initié cette commande. Entre-nous, disons-le, nous savons que des noms tels que ceux Kader Attou & Mourad Merzouki n’ont pas été évoqués (ce dernier a été convié mais fut absent) bien que nous savons qu’ils soutiennent fortement le “Pour”. J’aurais réellement passé une soirée mémorable si Mme.Nguyen et Mr.Merzouki étaient présents afin que l’on puisse vraiment assister à un débat qui pour le coup s’est pas mal penché sur Mr.Vinauger qui tant bien que mal à voulu affirmer sa démarche et défendre son statut.";
     private Article articleFull;
     private Article articleEmpty;
+    private Article longArticle;
 
     @Before
     public void setUp() throws Exception {
@@ -46,10 +49,15 @@ public class ArticleUnitTest {
                         "Des points qui ont été contre-carré avec merveille par Nasty & Bruce Ykanji. Ce dernier a superbement exprimé son ras-le-bol ainsi que son manque de confiance en un système redondant qui n’a jusque là jamais su apporter les aides suffisantes ainsi que les réponses nécessaires depuis 30 ans. Bien que la question ait été posé, aucune réponse n’a été apporté quant à savoir qui donc a initié cette commande. Entre-nous, disons-le, nous savons que des noms tels que ceux Kader Attou & Mourad Merzouki n’ont pas été évoqués (ce dernier a été convié mais fut absent) bien que nous savons qu’ils soutiennent fortement le “Pour”. J’aurais réellement passé une soirée mémorable si Mme.Nguyen et Mr.Merzouki étaient présents afin que l’on puisse vraiment assister à un débat qui pour le coup s’est pas mal penché sur Mr.Vinauger qui tant bien que mal à voulu affirmer sa démarche et défendre son statut.");
 
         articleEmpty = new Article(null, null, null, null, null, null);
+
+        SecureRandom random = new SecureRandom();
+        longArticle = new Article("Retour sur la conférence-débat de @NoiseLaVille", "image1.jpg","Ce soir, j’ai pu retourner sur les bancs de l’école (que j’ai quitté récemment, je vous rassure) en venant assister à une conférence-débat au sein de Sciences Po." +
+                "\n" + "Organisé par l’association étudiante Noise La Ville, elle avait pour thème : “Danses Hip-Hop & l’Etat, quelles perspectives ?” et conviait en ce début de soirée différents acteurs évoluant au sein et/ou à proximité de la culture danse Hip-Hop.",
+                new GregorianCalendar(2016, 2, 12).getTime(), "KIUDEE DAVIE", new BigInteger(10000, random).toString(32));
     }
 
     @Test
-    public void testArticleFullDetails() throws Exception {
+    public void testArticleFull() throws Exception {
         Assert.assertNotNull(articleFull);
         Assert.assertEquals(EXPECTED_TITLE  , articleFull.getTitle());
         Assert.assertEquals(EXPECTED_IMAGE, articleFull.getImage());
@@ -60,7 +68,7 @@ public class ArticleUnitTest {
     }
 
     @Test
-    public void testArticleEmptyDetails() throws Exception {
+    public void testArticleEmpty() throws Exception {
         Assert.assertNotNull(articleEmpty);
         Assert.assertNull(articleEmpty.getTitle());
         Assert.assertNull(articleEmpty.getImage());
@@ -68,5 +76,16 @@ public class ArticleUnitTest {
         Assert.assertNull(articleEmpty.getDate());
         Assert.assertNull(articleEmpty.getAuthor());
         Assert.assertNull(articleEmpty.getText());
+    }
+
+    @Test
+    public void testLongArticle() throws Exception {
+        Assert.assertNotNull(longArticle);
+        Assert.assertEquals(EXPECTED_TITLE  , longArticle.getTitle());
+        Assert.assertEquals(EXPECTED_IMAGE, longArticle.getImage());
+        Assert.assertEquals(EXPECTED_DESCRIPTION, longArticle.getDescription());
+        Assert.assertEquals(EXPECTED_DATE, longArticle.getDate());
+        Assert.assertEquals(EXPECTED_AUTHOR, longArticle.getAuthor());
+        Assert.assertNotNull(longArticle.getText());
     }
 }
