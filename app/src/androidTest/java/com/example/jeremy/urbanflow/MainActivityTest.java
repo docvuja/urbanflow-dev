@@ -9,6 +9,7 @@ import android.support.test.rule.ActivityTestRule;
 import android.support.v7.widget.RecyclerView;
 import android.test.ApplicationTestCase;
 import android.view.View;
+import android.widget.TextView;
 
 import org.junit.Assert;
 import org.junit.Rule;
@@ -25,7 +26,10 @@ import static android.support.test.espresso.contrib.RecyclerViewActions.scrollTo
 import static android.support.test.espresso.matcher.ViewMatchers.hasDescendant;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
+import static android.support.test.espresso.matcher.ViewMatchers.withParent;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
+import static org.hamcrest.Matchers.instanceOf;
+import static org.hamcrest.core.AllOf.allOf;
 import static org.hamcrest.core.StringStartsWith.startsWith;
 import static org.hamcrest.object.HasToString.hasToString;
 
@@ -36,10 +40,20 @@ public class MainActivityTest {
     @Rule
     public ActivityTestRule<MainActivity> mActivityRule = new ActivityTestRule(MainActivity.class);
 
+    @Test
+    public void testToolbarTitle() {
+        onView(allOf(instanceOf(TextView.class), withParent(withId(R.id.toolbar_main))))
+                .check(matches(withText("UrbanFlow")));
+    }
+
+    @Test
+    public void countRecyclerViewSize() {
+        onView(withId(R.id.recyclerView)).check(new RecyclerViewItemCountAssertion(13));
+    }
+
     // ARTICLES
     @Test
     public void isInRecyclerViewWelcome() {
-        // Has to be in first position
         onView(withId(R.id.recyclerView))
                 .perform(RecyclerViewActions.actionOnItem(
                         hasDescendant(withText("Welcome to UrbanFlow")), click()));
@@ -131,5 +145,24 @@ public class MainActivityTest {
         onView(withId(R.id.recyclerView))
                 .perform(RecyclerViewActions.actionOnItem(
                         hasDescendant(withText("WAR Battle - 1vs1 Popping & HipHop - by Ready Or Not")), click()));
+    }
+
+    public class RecyclerViewItemCountAssertion implements ViewAssertion {
+        private final int expectedCount;
+
+        public RecyclerViewItemCountAssertion(int expectedCount) {
+            this.expectedCount = expectedCount;
+        }
+
+        @Override
+        public void check(View view, NoMatchingViewException noViewFoundException) {
+            if (noViewFoundException != null) {
+                throw noViewFoundException;
+            }
+
+            RecyclerView recyclerView = (RecyclerView) view;
+            RecyclerView.Adapter adapter = recyclerView.getAdapter();
+            Assert.assertEquals(adapter.getItemCount(), expectedCount);
+        }
     }
 }

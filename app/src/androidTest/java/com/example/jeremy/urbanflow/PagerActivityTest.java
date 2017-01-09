@@ -5,17 +5,30 @@ import com.example.jeremy.urbanflow.Utils.DateUtils;
 import android.support.test.espresso.contrib.RecyclerViewActions;
 import android.support.test.espresso.core.deps.guava.base.Utf8;
 import android.support.test.rule.ActivityTestRule;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
+import org.hamcrest.Description;
+import org.hamcrest.Matcher;
+import org.hamcrest.TypeSafeMatcher;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.action.ViewActions.swipeLeft;
+import static android.support.test.espresso.action.ViewActions.swipeRight;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.hasDescendant;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
+import static android.support.test.espresso.matcher.ViewMatchers.withParent;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
+import static org.hamcrest.Matchers.instanceOf;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.core.AllOf.allOf;
 import static org.hamcrest.core.StringStartsWith.startsWith;
 
 /**
@@ -26,12 +39,27 @@ public class PagerActivityTest {
     @Rule
     public ActivityTestRule<MainActivity> mActivityRule = new ActivityTestRule(MainActivity.class);
 
+    @Before
+    public void setUp() throws Exception {
+        onView(withId(R.id.recyclerView))
+                .perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
+    }
+
+    @Test
+    public void testToolbarTitle() {
+        onView(allOf(instanceOf(TextView.class), withParent(withId(R.id.toolbar_viewpager))))
+                .check(matches(withText("UrbanFlow")));
+    }
+
+    @Test
+    public void checkFirstItem() {
+        onView(withId(R.id.title_article))
+                .check(matches(withText("Welcome to UrbanFlow")));
+    }
+
     // ARTICLES
     @Test
     public void testWelcome() {
-        // Has to be in first position
-        onView(withId(R.id.recyclerView))
-                .perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
         onView(withId(R.id.title_article))
                 .check(matches(withText("Welcome to UrbanFlow")));
         onView(withId(R.id.text_article))
@@ -43,10 +71,12 @@ public class PagerActivityTest {
     }
 
     @Test
-    public void testDNSP() {
-        onView(withId(R.id.recyclerView))
-                .perform(RecyclerViewActions.actionOnItem(
-                        hasDescendant(withText("Le DNSP pour LES NULS (version #STRITER)")), click()));
+    public void testDNSP() throws InterruptedException {
+        for (int i = 0; i < 9; ++i) {
+            onView(withId(R.id.container))
+                    .perform(swipeLeft());Thread.sleep(200);
+        }
+        Thread.sleep(2000);
         onView(withId(R.id.title_article))
                 .check(matches(withText("Le DNSP pour LES NULS (version #STRITER)")));
         onView(withId(R.id.text_article))
@@ -56,10 +86,12 @@ public class PagerActivityTest {
     }
 
     @Test
-    public void testConference() {
-        onView(withId(R.id.recyclerView))
-                .perform(RecyclerViewActions.actionOnItem(
-                        hasDescendant(withText("Retour sur la conférence-débat de @NoiseLaVille | STRITER")), click()));
+    public void testConference() throws InterruptedException {
+        for (int i = 0; i < 4; ++i) {
+            onView(withId(R.id.container))
+                    .perform(swipeLeft());Thread.sleep(200);
+        }
+        Thread.sleep(2000);
         onView(withId(R.id.title_article))
                 .check(matches(withText("Retour sur la conférence-débat de @NoiseLaVille | STRITER")));
         onView(withId(R.id.text_article))
@@ -69,10 +101,12 @@ public class PagerActivityTest {
     }
 
     @Test
-    public void testExperience() {
-        onView(withId(R.id.recyclerView))
-                .perform(RecyclerViewActions.actionOnItem(
-                        hasDescendant(withText("Retour sur l’expérience “The Turnament” (FR) | #STRITER")), click()));
+    public void testExperience() throws InterruptedException {
+        for (int i = 0; i < 2; ++i) {
+            onView(withId(R.id.container))
+                    .perform(swipeLeft());Thread.sleep(200);
+        }
+        Thread.sleep(2000);
         onView(withId(R.id.title_article))
                 .check(matches(withText("Retour sur l’expérience “The Turnament” (FR) | #STRITER")));
         onView(withId(R.id.text_article))
@@ -83,10 +117,10 @@ public class PagerActivityTest {
 
     // VIDEOS
     @Test
-    public void testCercle() {
-        onView(withId(R.id.recyclerView))
-                .perform(RecyclerViewActions.actionOnItem(
-                        hasDescendant(withText("Cercle Underground 2016 - Showcase - The Kartel")), click()));
+    public void testCercle() throws InterruptedException {
+        onView(withId(R.id.container))
+                .perform(swipeLeft());
+        Thread.sleep(200);
         onView(withId(R.id.video_title))
                 .check(matches(withText("Cercle Underground 2016 - Showcase - The Kartel")));
         onView(withId(R.id.video_desc))
@@ -94,10 +128,12 @@ public class PagerActivityTest {
     }
 
     @Test
-    public void testKantyn() {
-        onView(withId(R.id.recyclerView))
-                .perform(RecyclerViewActions.actionOnItem(
-                        hasDescendant(withText("Kantyn x PNL #LaFrenchTouch")), click()));
+    public void testKantyn() throws InterruptedException {
+        for (int i = 0; i < 10; ++i) {
+            onView(withId(R.id.container))
+                    .perform(swipeLeft());Thread.sleep(200);
+        }
+        Thread.sleep(2000);
         onView(withId(R.id.video_title))
                 .check(matches(withText("Kantyn x PNL #LaFrenchTouch")));
         onView(withId(R.id.video_desc))
@@ -105,10 +141,12 @@ public class PagerActivityTest {
     }
 
     @Test
-    public void testAnthologie() {
-        onView(withId(R.id.recyclerView))
-                .perform(RecyclerViewActions.actionOnItem(
-                        hasDescendant(withText("Un battle d'anthologie")), click()));
+    public void testAnthologie() throws InterruptedException {
+        for (int i = 0; i < 12; ++i) {
+            onView(withId(R.id.container))
+                    .perform(swipeLeft());Thread.sleep(200);
+        }
+        Thread.sleep(2000);
         onView(withId(R.id.video_title))
                 .check(matches(withText("Un battle d'anthologie")));
         onView(withId(R.id.video_desc))
@@ -116,10 +154,12 @@ public class PagerActivityTest {
     }
 
     @Test
-    public void testAnissa() {
-        onView(withId(R.id.recyclerView))
-                .perform(RecyclerViewActions.actionOnItem(
-                        hasDescendant(withText("Anissa x Lefa #LaFrenchTouch")), click()));
+    public void testAnissa() throws InterruptedException {
+        for (int i = 0; i < 5; ++i) {
+            onView(withId(R.id.container))
+                    .perform(swipeLeft());Thread.sleep(200);
+        }
+        Thread.sleep(2000);
         onView(withId(R.id.video_title))
                 .check(matches(withText(startsWith("Anissa x Lefa #LaFrenchTouch"))));
         onView(withId(R.id.video_desc))
@@ -127,10 +167,12 @@ public class PagerActivityTest {
     }
 
     @Test
-    public void testJerems() {
-        onView(withId(R.id.recyclerView))
-                .perform(RecyclerViewActions.actionOnItem(
-                        hasDescendant(withText(startsWith("Maître Gims"))), click()));
+    public void testJerems() throws InterruptedException {
+        for (int i = 0; i < 3; ++i) {
+            onView(withId(R.id.container))
+                    .perform(swipeLeft());Thread.sleep(200);
+        }
+        Thread.sleep(2000);
         onView(withId(R.id.video_title))
                 .check(matches(withText(startsWith("Maître Gims"))));
         onView(withId(R.id.video_desc))
@@ -139,10 +181,12 @@ public class PagerActivityTest {
 
     //EVENTS
     @Test
-    public void testCoursDeDanse() {
-        onView(withId(R.id.recyclerView))
-                .perform(RecyclerViewActions.actionOnItem(
-                        hasDescendant(withText("Cours de danse")), click()));
+    public void testCoursDeDanse() throws InterruptedException {
+        for (int i = 0; i < 11; ++i) {
+            onView(withId(R.id.container))
+                    .perform(swipeLeft());Thread.sleep(200);
+        }
+        Thread.sleep(2000);
         onView(withId(R.id.name_event))
                 .check(matches(withText("Cours de danse")));
         onView(withId(R.id.date_event))
@@ -157,10 +201,12 @@ public class PagerActivityTest {
 
 
     @Test
-    public void testJusteDebout() {
-        onView(withId(R.id.recyclerView))
-                .perform(RecyclerViewActions.actionOnItem(
-                        hasDescendant(withText("Juste Debout 2017")), click()));
+    public void testJusteDebout() throws InterruptedException {
+        for (int i = 0; i < 8; ++i) {
+            onView(withId(R.id.container))
+                    .perform(swipeLeft());Thread.sleep(200);
+        }
+        Thread.sleep(2000);
         onView(withId(R.id.name_event))
                 .check(matches(withText("Juste Debout 2017")));
         onView(withId(R.id.date_event))
@@ -175,10 +221,12 @@ public class PagerActivityTest {
 
 
     @Test
-    public void testPopping() {
-        onView(withId(R.id.recyclerView))
-                .perform(RecyclerViewActions.actionOnItem(
-                        hasDescendant(withText("Popping Choreo Workshop")), click()));
+    public void testPopping() throws InterruptedException {
+        for (int i = 0; i < 7; ++i) {
+            onView(withId(R.id.container))
+                    .perform(swipeLeft());Thread.sleep(200);
+        }
+        Thread.sleep(2000);
         onView(withId(R.id.name_event))
                 .check(matches(withText("Popping Choreo Workshop")));
         onView(withId(R.id.date_event))
@@ -192,10 +240,12 @@ public class PagerActivityTest {
     }
 
     @Test
-    public void testReady() {
-        onView(withId(R.id.recyclerView))
-                .perform(RecyclerViewActions.actionOnItem(
-                        hasDescendant(withText("WAR Battle - 1vs1 Popping & HipHop - by Ready Or Not")), click()));
+    public void testReady() throws InterruptedException {
+        for (int i = 0; i < 6; ++i) {
+            onView(withId(R.id.container))
+                    .perform(swipeLeft());Thread.sleep(200);
+        }
+        Thread.sleep(2000);
         onView(withId(R.id.name_event))
                 .check(matches(withText("WAR Battle - 1vs1 Popping & HipHop - by Ready Or Not")));
         onView(withId(R.id.date_event))
