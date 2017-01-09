@@ -31,6 +31,15 @@ configurations.all {
     resolutionStrategy.force 'com.google.code.findbugs:jsr305:1.3.9'
 }
 
+configurations {
+    unitTestCompile.extendsFrom runtime
+    unitTestRuntime.extendsFrom unitTestCompile
+}
+
+dependencies {
+    unitTestCompile files("$project.buildDir/results-tests")
+}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
